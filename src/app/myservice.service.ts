@@ -13,7 +13,20 @@ export class MyserviceService {
   i=0;
 
   text="Compare the 2 words and decide whether there meaning is almost the same, almost the opposite, or they have another relationship";
-  quesarray=[{'word1':'Old','word2':'New','answer':'opposite'},{'word1':'Up','word2':'Down','answer':'opposite'},{'word1':'Hello','word2':'Hi','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'},{'word1':'Old','word2':'New','answer':'same'}]
+    quesarray=[{'word1':'Tale','word2':'Yarn','answer':'same'},{'word1':'Eschew','word2':'Welcome','answer':'opposite'},
+    {'word1':'Sharp','word2':'Unwieldy','answer':'other'},
+    {'word1':'Cynical','word2':'Trusting','answer':'opposite'},
+    {'word1':'Right','word2':'Proper','answer':'same'},
+    {'word1':'Odd','word2':'Peculiar','answer':'same'},
+    {'word1':'Relevant','word2':'Mountainous','answer':'other'},
+    {'word1':'Unpleasant','word2':'Monstrous','answer':'same'},
+    {'word1':'Delicate','word2':'Madly','answer':'other'},
+    {'word1':'Lovely','word2':'Lippant','answer':'other'},
+    {'word1':'Spotty','word2':'Heavy','answer':'other'},
+    {'word1':'Differentiate','word2':'Combine','answer':'opposite'},
+    {'word1':'Ambigous','word2':'Clear','answer':'opposite'},
+    {'word1':'Hold','word2':'Cache','answer':'same'},
+    {'word1':'Enmity','word2':'Affection','answer':'opposite'}]
   constructor() { }
 
   changetext(){
