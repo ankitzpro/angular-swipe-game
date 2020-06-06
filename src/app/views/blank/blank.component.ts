@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router'
 import {MyserviceService} from '../../myservice.service';
+import { Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 
 
 
@@ -10,18 +11,38 @@ import {MyserviceService} from '../../myservice.service';
 })
 export class BlankComponent implements OnInit {
 
-  constructor( public routers:Router,private serv:MyserviceService){
+  constructor( public routers:Router,private serv:MyserviceService,
+    public formBuilder: FormBuilder){
   }
+  public myForm : FormGroup;
+    submitted = false;
 
   ngOnInit() {
     this.serv.i=0;
     this.serv.pageno=0;
+    this.createForm();
   }
+  get f() { return this.myForm.controls; }
 
-  btnClick(){
-    this.routers.navigate(['/one']);
-    this.serv.pageno=1;
-    console.log(this.serv.pageno);
- }
- 
+  createForm(){
+    this.myForm  = this.formBuilder.group({
+     email: ['', Validators.required],
+     level:['Easy']
+   });
+   }
+
+   onSubmit(){
+    this.submitted = true;
+    if (this.myForm.invalid) {
+          return;
+        }
+        
+        var formData=this.myForm.value;
+        this.serv.userData(formData);
+        this.routers.navigate(['/one']);
+        this.serv.pageno=1;
+   }
+
 }
+ 
+

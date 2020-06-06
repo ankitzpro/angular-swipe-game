@@ -1,5 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule, Component } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlankComponent } from './views/blank/blank.component';
 import { OneComponent } from './views/one/one.component';
 import { TwoComponent } from './views/two/two.component';
@@ -25,7 +27,7 @@ import { TimerComponent } from './views/timer/timer.component';
       { path: 'timer', component: TimerComponent },
       { path: '**', redirectTo: 'blank' }
       //{ path: 'catalog', component: CatalogViewComponent },
-    ])
+    ]), FormsModule,BrowserAnimationsModule,ReactiveFormsModule
   ],
   exports: [
     RouterModule,

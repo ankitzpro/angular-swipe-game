@@ -40,4 +40,9 @@ export class MyserviceService {
     this.answer=this.quesarray[this.i].answer;
     this.i=this.i+1;
   }
+
+  userData(data){
+    console.log(data);
+
+  }
 }
