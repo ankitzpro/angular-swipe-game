@@ -11,6 +11,8 @@ export class MyserviceService {
   word2='';
   answer='';
   i=0;
+intervalId: number = 0;
+seconds: number = 5;
 
   text="Compare the 2 words and decide whether there meaning is almost the same, almost the opposite, or they have another relationship";
     quesarray=[{'word1':'Tale','word2':'Yarn','answer':'same'},{'word1':'Eschew','word2':'Welcome','answer':'opposite'},
@@ -45,4 +47,8 @@ export class MyserviceService {
     console.log(data);
 
   }
+
+
+  clearTimer() { clearInterval(this.intervalId); }
+
 }

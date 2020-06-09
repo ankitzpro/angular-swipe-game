@@ -12,10 +12,9 @@ export class QuestionComponent implements OnInit {
 word1:String;
 word2:String;
 
-i:number;
-intervalId: number = 0;
-message: string = '';
 seconds: number = 5;
+i:number;
+message: string = '';
   ngOnInit() {
 this.word1=this.serv.word1;
 this.word2=this.serv.word2;
@@ -24,12 +23,14 @@ this.i=this.serv.i;
 this.countDown();
   }
   private countDown(): void {
-    this.intervalId = window.setInterval(() => {
-      this.seconds -= 1;
-      if (this.seconds === 0) {
+    this.serv.intervalId = window.setInterval(() => {
+      this.serv.seconds -= 1;
+      this.seconds=this.serv.seconds
+      if (this.serv.seconds === 0) {
         this.serv.anstext="You didn't attempted";
         this.routers.navigate(['/timer'])
       } 
     }, 1000);
   }
+
 }
