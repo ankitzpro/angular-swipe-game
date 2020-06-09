@@ -31,6 +31,8 @@ this.countDown();
         this.routers.navigate(['/timer'])
       } 
     }, 1000);
+    this.serv.seconds=5;
+    this.serv.intervalId=0;
   }
 
 }
