@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input,Output,EventEmitter,OnInit} from '@angular/core';
 import { Router} from '@angular/router'
 import {MyserviceService} from './myservice.service'
 
@@ -8,11 +8,13 @@ import {MyserviceService} from './myservice.service'
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ],
 })
-export class AppComponent  {
-  eventText = '';
-  
+export class AppComponent implements OnInit  {
+@Input() gameData:any;
+@Output() scoreData:EventEmitter<any>= new EventEmitter();  
 
+  eventText = '';
   btnhide=false;
+  
   constructor( public routers:Router,private serv:MyserviceService){
   }
  ngOnInit() {
@@ -44,6 +46,9 @@ export class AppComponent  {
       
 }
 
+sendValues(){
+  this.scoreData.emit(this.serv.score);
+}
 
 
 }
