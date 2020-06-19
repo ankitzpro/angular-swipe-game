@@ -24,15 +24,13 @@ this.countDown();
   }
   private countDown(): void {
     this.serv.intervalId = window.setInterval(() => {
-      this.serv.seconds -= 1;
-      this.seconds=this.serv.seconds
-      if (this.serv.seconds === 0) {
+      this.seconds -= 0.1;
+      this.serv.seconds=this.seconds;
+      if ((this.seconds).toFixed(1) == '0.0') {
         this.serv.anstext="You didn't attempted";
         this.routers.navigate(['/timer'])
       } 
-    }, 1000);
-    this.serv.seconds=5;
-    this.serv.intervalId=0;
+    }, 100);
   }
 
 }
