@@ -38,19 +38,7 @@ export class AppComponent  {
         this.routers.navigate(['/question']);
       }
       if(page>2 && page<=17 && this.eventText!='up'){
-        switch(this.eventText) { 
-          case 'left': { 
-            this.serv.anstext=this.serv.answer=='same' ? 'Correct Answer' : 'Incorrect Answer';
-             break; 
-          } 
-          case 'right': { 
-            this.serv.anstext=this.serv.answer=='opposite' ? 'Correct Answer' : 'Incorrect Answer';
-            break; 
-         } case 'down': { 
-          this.serv.anstext=this.serv.answer=='other' ? 'Correct Answer' : 'Incorrect Answer';
-          break; 
-          } 
-       }
+        this.serv.getAnswer(this.eventText);
        this.routers.navigate(['/timer']); 
       }
       
