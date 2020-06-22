@@ -12,7 +12,7 @@ export class QuestionComponent implements OnInit {
 word1:String;
 word2:String;
 
-seconds: number = 5;
+seconds= this.serv.seconds;
 i:number;
 message: string = '';
   ngOnInit() {

@@ -40,6 +40,7 @@ export class AppComponent implements OnInit  {
         this.routers.navigate(['/question']);
       }
       if(page>2 && page<=17 && this.eventText!='up'){
+        this.serv.clearTimer();
         this.serv.getAnswer(this.eventText);
        this.routers.navigate(['/timer']); 
       }

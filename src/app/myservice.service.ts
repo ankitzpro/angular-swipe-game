@@ -38,6 +38,12 @@ score=0;
   }
 
   question(){
+    if(this.i>=0 &&  this.i<9){
+      this.seconds=12;
+    }
+    else{
+  this.seconds=8;
+    }
     this.word1=this.quesarray[this.i].word1;
     this.word2=this.quesarray[this.i].word2;
     this.answer=this.quesarray[this.i].answer;
