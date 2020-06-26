@@ -18,6 +18,7 @@ export class AppComponent implements OnInit  {
   constructor( public routers:Router,private serv:MyserviceService){
   }
  ngOnInit() {
+    this.serv.readData();
     this.routers.navigate([''])
   }
   onSwipe(evt) {

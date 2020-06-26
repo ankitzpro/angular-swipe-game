@@ -4,15 +4,15 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
-    apiKey: "AIzaSyBl5wAPY0K3vd4UxPngC9XJKhrpFssKufs",
-    authDomain: "bookingsystem-31c4a.firebaseapp.com",
-    databaseURL: "https://bookingsystem-31c4a.firebaseio.com",
-    projectId: "bookingsystem-31c4a",
-    storageBucket: "bookingsystem-31c4a.appspot.com",
-    messagingSenderId: "644764403073",
-    appId: "1:644764403073:web:c31067d9d81f5fbbd31480",
-    measurementId: "G-FCEH7DXH4N"
+   firebaseConfig : {
+    apiKey: "AIzaSyCnwoDOexFVsvOB30B_bXUUU51iw-I1ap8",
+  authDomain: "games-ddd21.firebaseapp.com",
+  databaseURL: "https://games-ddd21.firebaseio.com",
+  projectId: "games-ddd21",
+  storageBucket: "games-ddd21.appspot.com",
+  messagingSenderId: "85256308897",
+  appId: "1:85256308897:web:9f03388fb0ae1d5bc548e0",
+  measurementId: "G-SXRQPBN2S0"
   }
 };
 

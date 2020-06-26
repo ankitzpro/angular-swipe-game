@@ -6,6 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any> {
@@ -16,7 +19,8 @@ export class MyHammerConfig extends HammerGestureConfig {
 
 @NgModule({
   imports:      [  FormsModule,
-    AppRoutingModule,BrowserAnimationsModule ],
+    AppRoutingModule,BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],
   providers: [

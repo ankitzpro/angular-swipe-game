@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class MyserviceService {
 intervalId: number = 0;
 seconds: number = 5;
 score=0;
-
+data:any;
   text="Compare the 2 words and decide whether there meaning is almost the same, almost the opposite, or they have another relationship";
     quesarray=[{'word1':'Tale','word2':'Yarn','answer':'same'},{'word1':'Eschew','word2':'Welcome','answer':'opposite'},
     {'word1':'Sharp','word2':'Unwieldy','answer':'other'},
@@ -30,7 +32,7 @@ score=0;
     {'word1':'Ambigous','word2':'Clear','answer':'opposite'},
     {'word1':'Hold','word2':'Cache','answer':'same'},
     {'word1':'Enmity','word2':'Affection','answer':'opposite'}]
-  constructor() { }
+  constructor(private firestore: AngularFirestore) { }
 
   changetext(){
     this.text="If they have the same meaning, swipe left. For almost opposites, swipe right. For all other words pairs, swipe down";
@@ -76,5 +78,22 @@ score=0;
          this.score=this.score+this.seconds;
        }
   }
+  readData() {
+    return this.firestore.collection('linkswipe').snapshotChanges().subscribe(data => {
 
+      this.data = data.map(e => {
+        return {
+          id: e.payload.doc.data()['id'],
+          isEdit: false,
+          word1: e.payload.doc.data()['word1'],
+          word2: e.payload.doc.data()['word2'],
+          relation: e.payload.doc.data()['relation'],
+          difficulty: e.payload.doc.data()['difficulty'],
+        };
+      })
+      console.log(this.data);
+
+    });
+
+}
 }
