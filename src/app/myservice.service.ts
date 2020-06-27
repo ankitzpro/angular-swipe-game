@@ -90,7 +90,6 @@ data:any;
           difficulty: e.payload.doc.data()['difficulty'],
         };
       })
-      console.log(this.data);
 
     });
 
