@@ -18,7 +18,7 @@ seconds: number = 5;
 score=0;
 data:any;
   text="Compare the 2 words and decide whether there meaning is almost the same, almost the opposite, or they have another relationship";
-   quesarray=[{'difficulty':2},
+   quesarray=[{'difficulty':2,'seconds':12},
     {'difficulty':1,'seconds':12},
     {'difficulty':1,'seconds':12},
     {'difficulty':1,'seconds':12},
@@ -28,7 +28,7 @@ data:any;
     {'difficulty':1,'seconds':8},
     {'difficulty':1,'seconds':8},
     {'difficulty':1,'seconds':8}]
-    quesarray2=[];
+    temparray=[];
   constructor(private firestore: AngularFirestore) { }
 
   changetext(){
@@ -40,13 +40,14 @@ data:any;
     this.seconds=this.quesarray[this.i].seconds;
     for(var j=0;j<this.data.length;j++){
     if(this.data[j].difficulty==this.quesarray[this.i].difficulty){
-      this.quesarray2.push({'word1':this.data[j].word1,'word2':this.data[j].word1,'relation':this.data[j].word1})
+      this.temparray.push({'word1':this.data[j].word1,'word2':this.data[j].word2,'relation':this.data[j].relation})
     }
     }
-    var rand= Math.floor(Math.random() * (this.quesarray.length));
-    this.word1=this.quesarray2[rand].word1;
-    this.word2=this.quesarray2[rand].word2;
-    this.answer=this.quesarray2[rand].relation;
+    console.log(this.temparray);
+    var rand= Math.floor(Math.random() * (this.temparray.length));
+    this.word1=this.temparray[rand].word1;
+    this.word2=this.temparray[rand].word2;
+    this.answer=this.temparray[rand].relation;
     this.i=this.i+1;
   }
 
@@ -61,14 +62,14 @@ data:any;
   getAnswer(eventtext){
     switch(eventtext) { 
           case 'left': { 
-            this.anstext=this.answer=='same' ? 'Correct Answer' : 'Incorrect Answer';
+            this.anstext=this.answer=='Almost the same' ? 'Correct Answer' : 'Incorrect Answer';
              break; 
           } 
           case 'right': { 
-            this.anstext=this.answer=='opposite' ? 'Correct Answer' : 'Incorrect Answer';
+            this.anstext=this.answer=='Almost the Opposite' ? 'Correct Answer' : 'Incorrect Answer';
             break; 
          } case 'down': { 
-          this.anstext=this.answer=='other' ? 'Correct Answer' : 'Incorrect Answer';
+          this.anstext=this.answer=='Totally Unrelated' ? 'Correct Answer' : 'Incorrect Answer';
           break; 
           } 
        }
