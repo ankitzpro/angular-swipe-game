@@ -18,16 +18,17 @@ seconds: number = 5;
 score=0;
 data:any;
   text="Compare the 2 words and decide whether there meaning is almost the same, almost the opposite, or they have another relationship";
-   quesarray=[{'difficulty':1},
-    {'difficulty':1},
-    {'difficulty':1},
-    {'difficulty':1},
-    {'difficulty':1},
-    {'difficulty':1},
-    {'difficulty':1},
-    {'difficulty':1},
-    {'difficulty':1},
-    {'difficulty':1}]
+   quesarray=[{'difficulty':2},
+    {'difficulty':1,'seconds':12},
+    {'difficulty':1,'seconds':12},
+    {'difficulty':1,'seconds':12},
+    {'difficulty':1,'seconds':12},
+    {'difficulty':1,'seconds':12},
+    {'difficulty':1,'seconds':8},
+    {'difficulty':1,'seconds':8},
+    {'difficulty':1,'seconds':8},
+    {'difficulty':1,'seconds':8}]
+    quesarray2=[];
   constructor(private firestore: AngularFirestore) { }
 
   changetext(){
@@ -36,15 +37,16 @@ data:any;
   }
 
   question(){
-    if(this.i>=0 &&  this.i<9){
-      this.seconds=12;
+    this.seconds=this.quesarray[this.i].seconds;
+    for(var j=0;j<this.data.length;j++){
+    if(this.data[j].difficulty==this.quesarray[this.i].difficulty){
+      this.quesarray2.push({'word1':this.data[j].word1,'word2':this.data[j].word1,'relation':this.data[j].word1})
     }
-    else{
-  this.seconds=8;
     }
-    this.word1=this.quesarray[this.i].word1;
-    this.word2=this.quesarray[this.i].word2;
-    this.answer=this.quesarray[this.i].answer;
+    var rand= Math.floor(Math.random() * (this.quesarray.length));
+    this.word1=this.quesarray2[rand].word1;
+    this.word2=this.quesarray2[rand].word2;
+    this.answer=this.quesarray2[rand].relation;
     this.i=this.i+1;
   }
 
