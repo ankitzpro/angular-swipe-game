@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 export class MyHammerConfig extends HammerGestureConfig {
@@ -20,7 +21,7 @@ export class MyHammerConfig extends HammerGestureConfig {
 @NgModule({
   imports:      [  FormsModule,
     AppRoutingModule,BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule ],
+    AngularFireDatabaseModule,AngularFirestoreModule ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],
   providers: [
