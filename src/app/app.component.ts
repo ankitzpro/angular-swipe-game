@@ -1,6 +1,6 @@
 import { Component,Input,Output,EventEmitter,OnInit} from '@angular/core';
-import { Router} from '@angular/router'
 import {MyserviceService} from './myservice.service'
+import { Subscription } from 'rxjs';
 import { Subject} from 'rxjs';
  
 @Component({
