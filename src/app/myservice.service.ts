@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { BehaviorSubject,Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyserviceService {
+compoShowValue='Blank';
+private compoShow: BehaviorSubject<string> = new BehaviorSubject<string>(this.compoShowValue);
 
+compoShow$: Observable<string> = this.compoShow.asObservable();
   anstext='';
   pageno=0;
   word1='';
@@ -37,6 +41,7 @@ data:any;
   }
 
   question(){
+    this.temparray=[];
     this.seconds=this.quesarray[this.i].seconds;
     for(var j=0;j<this.data.length;j++){
     if(this.data[j].difficulty==this.quesarray[this.i].difficulty){
@@ -93,5 +98,9 @@ data:any;
 
     });
 
+}
+compoChange(comp:any){
+this.compoShowValue=comp;
+this.compoShow.next(this.compoShowValue);
 }
 }

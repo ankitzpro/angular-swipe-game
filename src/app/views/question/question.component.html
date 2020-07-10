@@ -1,6 +1,6 @@
 <hr>
 <div class=row>
-        <div class=" col-sm-6 "><h4>{{i}}/15</h4></div>
+        <div class=" col-sm-6 "><h4>{{i}}/{{tot}}</h4></div>
         <div class="col-sm-6 text-danger"><h3>{{(seconds).toFixed(1)}}</h3></div>
     </div>
  <hr>   
@@ -15,8 +15,9 @@
       (@cardAnimator.done)="resetAnimationState($event)"
       (swipeleft)='startAnimation("swipeleft")' 
       (swiperight)='startAnimation("swiperight")'
+      (swipedown)='startAnimation("swipedown")'
       >
-<div  style="width:200px" class=" " data-toggle="tooltip" data-placement="top" >{{word1}}</div>
+<div>{{word1}}</div>
 <br>
-<div  style="width:200px" class=" " data-toggle="tooltip" data-placement="top" >{{word2}}</div>
+<div>{{word2}}</div>
 </div>

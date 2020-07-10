@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MyserviceService} from '../../myservice.service';
-import { Router} from '@angular/router';
 
 @Component({
   selector: 'timer',
@@ -8,7 +7,7 @@ import { Router} from '@angular/router';
 })
 export class TimerComponent implements OnInit {
 
-  constructor(private serv: MyserviceService,private routers:Router) { }
+  constructor(private serv: MyserviceService) { }
 anstext:String;
 intervalId: number = 0;
 message: string = '';
@@ -22,12 +21,14 @@ this.countDown();
     this.intervalId = window.setInterval(() => {
       this.seconds -= 1;
       if (this.seconds === 0 ) {
-        if(this.serv.pageno>=17){
-          this.routers.navigate(['/blank'])
+        if(this.serv.i+1==this.serv.quesarray.length){
+         // this.routers.navigate(['/blank'],{ skipLocationChange: true })
+         this.serv.compoChange('Blank');
         }
         else{
           this.serv.question();
-        this.routers.navigate(['/question'])
+        //this.routers.navigate(['/question'],{ skipLocationChange: true })
+        this.serv.compoChange('Question');
       } 
     }
     }, 1000);

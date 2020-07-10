@@ -9,18 +9,19 @@ import { Subject} from 'rxjs';
   styleUrls: [ './app.component.css' ],
 })
 export class AppComponent implements OnInit  {
-  parentSubject:Subject<string> = new Subject();
-@Input() gameData:any;
-@Output() scoreData:EventEmitter<any>= new EventEmitter();  
+ @Input() gameData:any;
+parentSubject:Subject<string> = new Subject();
 
   eventText = '';
   btnhide=false;
-  
-  constructor( public routers:Router,private serv:MyserviceService){
+  data:any;
+  composh:any
+  sub:Subscription;
+  constructor( private serv:MyserviceService){
   }
  ngOnInit() {
+  this.sub = this.serv.compoShow$.subscribe(compoShow => this.composh = compoShow);
     this.serv.readData();
-    this.routers.navigate([''])
   }
   onSwipe(evt) {
 
@@ -34,26 +35,28 @@ export class AppComponent implements OnInit  {
       if(this.eventText=='left' && page==1)  {
        
         this.serv.changetext();
-        this.routers.navigate(['/two'])
+       // this.routers.navigate(['/two'],{ skipLocationChange: true });
+    this.serv.compoChange('Two');
       }
 
       if(this.eventText=='left' && page==2){
         this.serv.question();
-        this.routers.navigate(['/question']);
+        //this.routers.navigate(['/question'],{ skipLocationChange: true });
+        this.serv.compoChange('Question');
       }
       if(page>2 && page<=17 && this.eventText!='up'){
-        var value = this.eventText='left'? 'swipeleft' :'swiperight';
-        this.parentSubject.next(value);
-        this.serv.clearTimer();
+        
+        this.parentSubject.next('swipe'+this.eventText);
         this.serv.getAnswer(this.eventText);
-       this.routers.navigate(['/timer']); 
-      }
+        this.serv.clearTimer();
+
+        setTimeout(() =>{
+         this.serv.compoChange('Timer');
+      },500);
+    }
       
 }
 
-sendValues(){
-  this.scoreData.emit(this.serv.score);
-}
 
 
 }
