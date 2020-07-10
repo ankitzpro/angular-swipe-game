@@ -1,7 +1,7 @@
 import { Component,Input,Output,EventEmitter,OnInit} from '@angular/core';
 import { Router} from '@angular/router'
 import {MyserviceService} from './myservice.service'
-
+import { Subject} from 'rxjs';
  
 @Component({
   selector: 'my-app',
@@ -9,6 +9,7 @@ import {MyserviceService} from './myservice.service'
   styleUrls: [ './app.component.css' ],
 })
 export class AppComponent implements OnInit  {
+  parentSubject:Subject<string> = new Subject();
 @Input() gameData:any;
 @Output() scoreData:EventEmitter<any>= new EventEmitter();  
 
@@ -41,6 +42,8 @@ export class AppComponent implements OnInit  {
         this.routers.navigate(['/question']);
       }
       if(page>2 && page<=17 && this.eventText!='up'){
+        var value = this.eventText='left'? 'swipeleft' :'swiperight';
+        this.parentSubject.next(value);
         this.serv.clearTimer();
         this.serv.getAnswer(this.eventText);
        this.routers.navigate(['/timer']); 

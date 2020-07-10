@@ -10,6 +10,13 @@
             <div class="col-sm-4"><p>Almost Opposite <br> Swipe Right</p></div>
         </div>
 <hr>
-<div  style="width:200px" class="btn btn-success m-1 " data-toggle="tooltip" data-placement="top" >{{word1}}</div>
+<div class="tphoto"
+[@cardAnimator]="animationState"
+      (@cardAnimator.done)="resetAnimationState($event)"
+      (swipeleft)='startAnimation("swipeleft")' 
+      (swiperight)='startAnimation("swiperight")'
+      >
+<div  style="width:200px" class=" " data-toggle="tooltip" data-placement="top" >{{word1}}</div>
 <br>
-<div  style="width:200px" class="btn btn-success m-1 " data-toggle="tooltip" data-placement="top" >{{word2}}</div>
+<div  style="width:200px" class=" " data-toggle="tooltip" data-placement="top" >{{word2}}</div>
+</div>
