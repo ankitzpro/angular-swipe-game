@@ -80,6 +80,10 @@ data:any;
        if(this.anstext=='Correct Answer'){
          this.score=this.score+this.seconds;
        }
+       if(this.i+1==this.quesarray.length){
+         this.anstext='Your Final score is '+this.score.toFixed(2);
+
+       }
   }
   readData() {
     return this.firestore.collection('linkswipe').snapshotChanges().subscribe(data => {
