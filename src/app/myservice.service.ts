@@ -84,7 +84,6 @@ data:any;
   }
   readData() {
     return this.firestore.collection('linkswipe').snapshotChanges().subscribe(data => {
-      console.log(data);
       this.data = data.map(e => {
         return {
           id: e.payload.doc.data()['id'],
