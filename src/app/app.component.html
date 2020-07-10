@@ -1,8 +1,14 @@
 <div class="container">
-  <div class="gesture__zone" (swipe)="onSwipe($event)">
+  <div class="gesture__zone" >
+    <div style="height: 60px;">
   <h1>Swipe Game</h1>
- 
-      
-      <router-outlet ></router-outlet>
+</div>
+      <div style="height: 500px;" (swipe)="onSwipe($event)">
+      <blank *ngIf="composh=='Blank'"></blank>
+      <one *ngIf="composh=='One'"></one>
+      <two *ngIf="composh=='Two'"></two>
+      <timer *ngIf="composh=='Timer'"></timer>
+      <question *ngIf="composh=='Question'"  [parentSubject]="parentSubject"></question>
+    </div>
 </div>
 </div>

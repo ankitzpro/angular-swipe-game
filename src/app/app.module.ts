@@ -5,11 +5,15 @@ import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-br
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app.routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { BlankComponent } from './views/blank/blank.component';
+import { OneComponent } from './views/one/one.component';
+import { TwoComponent } from './views/two/two.component';
+import { QuestionComponent } from './views/question/question.component';
+import { TimerComponent } from './views/timer/timer.component';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any> {
@@ -20,9 +24,11 @@ export class MyHammerConfig extends HammerGestureConfig {
 
 @NgModule({
   imports:      [  FormsModule,
-    AppRoutingModule,BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig),
+    BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,AngularFirestoreModule ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent,BlankComponent,
+    OneComponent
+     ,TwoComponent,QuestionComponent,TimerComponent ],
   bootstrap:    [ AppComponent ],
   providers: [
     {
