@@ -48,7 +48,6 @@ data:any;
       this.temparray.push({'word1':this.data[j].word1,'word2':this.data[j].word2,'relation':this.data[j].relation})
     }
     }
-    console.log(this.temparray);
     var rand= Math.floor(Math.random() * (this.temparray.length));
     this.word1=this.temparray[rand].word1;
     this.word2=this.temparray[rand].word2;
