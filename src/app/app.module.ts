@@ -35,7 +35,5 @@ export class MyHammerConfig extends HammerGestureConfig {
       useClass: MyHammerConfig,
     },
   ]
-,
-exports:[AppComponent]
 })
 export class AppModule { }
